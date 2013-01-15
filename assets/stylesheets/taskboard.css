@@ -20,7 +20,7 @@ body
  swimlane class is used by:
   - #board_header
   - .board
-  
+
 Also use by the Column Width preference to
 determine the unit width of the swimlanes.
 See RB.Taskboard.initialize()
@@ -58,7 +58,7 @@ See RB.Taskboard.initialize()
 }
 
 /* shared #impediments and #tasks */
-#impediment {
+#impediments {
   margin-top: 42px;
 }
 .board{
@@ -80,7 +80,7 @@ See RB.Taskboard.initialize()
 .board td:first-child{
   min-width:210px;
   padding:5px;
-  width:210px; 
+  width:210px;
 }
 .board td:last-child{
   border-right:none;
