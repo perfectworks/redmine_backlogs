@@ -59,7 +59,7 @@ See RB.Taskboard.initialize()
 
 /* shared #impediments and #tasks */
 #impediments {
-  margin-top: 42px;
+  margin-top: 28px;
 }
 .board{
   /* background-color:#FCFCFC; */
