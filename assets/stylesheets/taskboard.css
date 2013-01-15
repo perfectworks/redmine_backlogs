@@ -35,10 +35,10 @@ See RB.Taskboard.initialize()
 #board_header{
   background-color:#EEEEEE;
   border:1px solid #CCCCCC;
-  margin-bottom:0;
   margin-right:10px;
-  position: relative;
+  position: fixed;
   z-index: 1000;
+  top: 30px;
 }
 #board_header td{
   background-color:#EEEEEE;
@@ -58,6 +58,9 @@ See RB.Taskboard.initialize()
 }
 
 /* shared #impediments and #tasks */
+#impediment {
+  margin-top: 42px;
+}
 .board{
   /* background-color:#FCFCFC; */
   border:1px solid #CCCCCC;

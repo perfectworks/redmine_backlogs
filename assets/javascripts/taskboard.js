@@ -218,10 +218,21 @@ RB.UserFilter = RB.Object.create({
 });
 
 RB.$(function(){ /*document ready*/
-  RB.$("#board_header").scrollFollow({
-    speed: 100,
-    offset: 0
-  });
+  var table = RB.$('#board_header');
+  var toolbarHeight = RB.$('#toolbar').height();
+
+  function resetTableHeader() {
+    var scrollTop = RB.$(document.body).scrollTop();
+    table.css({
+      top: Math.min(toolbarHeight, Math.max(0, toolbarHeight - scrollTop)) + 'px'
+    });
+  }
+
+  resetTableHeader();
+
+  RB.$(window).scroll(resetTableHeader);
   RB.UserFilter.initialize();
 });
+
+// vim: set et sts=2 ts=2 sw=2 :
 
