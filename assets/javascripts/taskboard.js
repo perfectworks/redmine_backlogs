@@ -3,14 +3,14 @@
 ***************************************/
 
 RB.Taskboard = RB.Object.create(RB.Model, {
-    
+
   initialize: function(el){
     var j = RB.$(el);
     var self = this; // So we can bind the event handlers to this object
-    
+
     self.$ = j;
     self.el = el;
-    
+
     // Associate this object with the element for later retrieval
     j.data('this', self);
 
@@ -67,32 +67,32 @@ RB.Taskboard = RB.Object.create(RB.Model, {
     // Add handler for .add_new click
     j.find('#impediments .add_new').bind('click', self.handleAddNewImpedimentClick);
   },
-  
+
   dragComplete: function(event, ui) {
     var isDropTarget = (ui.sender==null); // Handler is triggered for source and target. Thus the need to check.
 
     if(isDropTarget){
       ui.item.data('this').saveDragResult();
-    }    
+    }
   },
-  
-  dragStart: function(event, ui){ 
+
+  dragStart: function(event, ui){
     if (jQuery.support.noCloneEvent){
       ui.item.addClass("dragging");
     } else {
       // for IE
-      ui.item.addClass("dragging");      
+      ui.item.addClass("dragging");
       ui.item.draggable('enabled');
     }
   },
-  
-  dragStop: function(event, ui){ 
+
+  dragStop: function(event, ui){
     if (jQuery.support.noCloneEvent){
       ui.item.removeClass("dragging");
     } else {
       // for IE
       ui.item.draggable('disable');
-      ui.item.removeClass("dragging");      
+      ui.item.removeClass("dragging");
     }
   },
 
@@ -101,7 +101,7 @@ RB.Taskboard = RB.Object.create(RB.Model, {
     var row = RB.$(this).parents("tr").first();
     RB.$('#taskboard').data('this').newImpediment(row);
   },
-  
+
   handleAddNewTaskClick: function(event){
     if (event.button > 1) return;
     var row = RB.$(this).parents("tr").first();
@@ -123,14 +123,14 @@ RB.Taskboard = RB.Object.create(RB.Model, {
     var o = RB.Factory.initialize(RB.Impediment, impediment);
     o.edit();
   },
-        
+
   newTask: function(row){
     var task = RB.$('#task_template').children().first().clone();
     row.find(".list").first().prepend(task);
     var o = RB.Factory.initialize(RB.Task, task);
     o.edit();
   },
-  
+
   updateColWidths: function(){
     var w = parseInt(RB.$("#col_width input").val(), 10);
     if(w==null || isNaN(w)){
@@ -224,7 +224,8 @@ RB.$(function(){ /*document ready*/
   function resetTableHeader() {
     var scrollTop = RB.$(document.body).scrollTop();
     table.css({
-      top: Math.min(toolbarHeight, Math.max(0, toolbarHeight - scrollTop)) + 'px'
+      top: Math.min(toolbarHeight, Math.max(0, toolbarHeight - scrollTop)),
+      left: Math.min(0, -RB.$(document.body).scrollLeft())
     });
   }
 
